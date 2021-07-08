@@ -26,7 +26,7 @@ services:
       context: docker/dev/php
       dockerfile: Dockerfile
     volumes:
-      - ./api:/var/www/api
+      - ./src/api:/var/www/api
     environment:
       # If you down want to use xDebug, set remote_enable=0
       XDEBUG_CONFIG: "remote_enable=1"
@@ -65,7 +65,7 @@ services:
       context: docker/dev/client
       dockerfile: Dockerfile
     volumes:
-      - ./client:/var/www/client
+      - ./src/client:/var/www/client
 
 ######### Volumes ###################################
 
