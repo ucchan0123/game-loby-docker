@@ -33,22 +33,6 @@ services:
       PHP_IDE_CONFIG: "serverName=Docker"
     depends_on:
       - postgres
-      - postgres-testing
-      - redis
-      - mailhog
-
-  # Supervisor container (schedule and queue runner)
-  supervisor:
-    build:
-      context: docker/dev/supervisor
-      dockerfile: Dockerfile
-    volumes:
-      - ./:/var/www/
-      - ./docker/dev/supervisor/conf.d:/etc/supervisor/conf.d
-      - ./docker/dev/supervisor/logs:/var/log
-    depends_on:
-      - postgres
-      - redis
       - mailhog
 
   # PostgreSQL database container
@@ -68,27 +52,6 @@ services:
       - POSTGRES_DB=app
       - POSTGRES_USER=app
       - POSTGRES_PASSWORD=app
-
-  # PostgreSQL testing database container
-  postgres-testing:
-    build:
-      context: docker/dev/postgres
-      dockerfile: Dockerfile
-    environment:
-      - LC_ALL=C.UTF-8
-      - POSTGRES_DB=app
-      - POSTGRES_USER=app
-      - POSTGRES_PASSWORD=app
-
-  # Redis container
-  redis:
-    build:
-      context: docker/dev/redis
-      dockerfile: Dockerfile
-    volumes:
-      - redis:/data
-    ports:
-      - 63791:6379
 
   # Mailhog container (SMTP testing)
   mailhog:
@@ -110,6 +73,4 @@ services:
 
 volumes:
   database:
-    driver: local
-  redis:
     driver: local
