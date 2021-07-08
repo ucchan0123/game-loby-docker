@@ -46,7 +46,11 @@ RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
 # Composer installation
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.1 /usr/bin/composer /usr/local/bin/composer
+
+# Set Composer Config
+RUN composer config -g process-timeout 3600 && \
+    composer config -g repos.packagist composer https://packagist.org
 
 # Clean up
 RUN apt-get clean
