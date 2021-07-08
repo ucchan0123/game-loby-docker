@@ -1,7 +1,24 @@
-# This directory is needed for the Nuxt application
+# client
 
-It will be installed during the initial build process with the `make install` command.
+## Project setup
+```
+npm install
+```
 
-During the nuxt app creation select the following options:
-- Rendering mode
-    - [x] Universal (SSR)
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

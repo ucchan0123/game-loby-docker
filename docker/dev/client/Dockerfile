@@ -8,4 +8,4 @@ WORKDIR /var/www/client
 ENV HOST 0.0.0.0
 
 # Init command
-CMD ["sh", "-c", "yarn install && yarn dev"]
+CMD ["sh", "-c", "yarn serve"]

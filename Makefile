@@ -253,7 +253,6 @@ install-laravel:
 	mkdir api
 	docker-compose up -d
 	docker-compose exec php composer create-project --prefer-dist laravel/laravel .
-	sudo chown ${USER}:${USER} -R api
 	sudo chmod -R 777 api/bootstrap/cache
 	sudo chmod -R 777 api/storage
 	sudo rm api/.env
@@ -267,9 +266,7 @@ install-nuxt:
 	docker-compose down
 	sudo rm -rf client
 	docker-compose run client yarn create nuxt-app ../client
-	sudo chown ${USER}:${USER} -R client
 	cp .env.client client/.env
-	sed -i "1i require('dotenv').config()" client/nuxt.config.js
 	docker-compose up -d
 	docker-compose exec client yarn info nuxt version
 
