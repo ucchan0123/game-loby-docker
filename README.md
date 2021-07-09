@@ -42,7 +42,9 @@ $ make down
 
 フロントのURLはこちら [http://localhost:8080](http://localhost:8080) 
 
-バックエンドAPIのURLはこちら [http://localhost:8080/api](http://localhost:8080/api) または  [http://localhost:8081](http://localhost:8081)
+バックエンドAPIのURLはこちら [http://localhost:8080/api](http://localhost:8080/api) 
+
+バックエンドの画面が見たくなったらこちらから [http://localhost:8081](http://localhost:8081) 
 
 ## Overview
 Look at one of the following topics to learn more about the project
