@@ -2,6 +2,8 @@
 # Docker
 #-----------------------------------------------------------
 
+init: build composer-install permissions key migrate
+
 # Wake up docker containers
 up:
 	docker-compose up -d
@@ -65,8 +67,7 @@ client:
 # Clear file-based logs
 logs-clear:
 	sudo rm docker/dev/nginx/logs/*.log
-	sudo rm docker/dev/supervisor/logs/*.log
-	sudo rm api/storage/logs/*.log
+	sudo rm src/api/storage/logs/*.log
 
 
 #-----------------------------------------------------------
@@ -97,20 +98,6 @@ db-fresh:
 
 
 #-----------------------------------------------------------
-# Redis
-#-----------------------------------------------------------
-
-redis:
-	docker-compose exec redis redis-cli
-
-redis-flush:
-	docker-compose exec redis redis-cli FLUSHALL
-
-redis-install:
-	docker-compose exec php composer require predis/predis
-
-
-#-----------------------------------------------------------
 # Queue
 #-----------------------------------------------------------
 
@@ -138,10 +125,6 @@ coverage:
 # Run phpunit tests
 dusk:
 	docker-compose exec php php artisan dusk
-
-# Generate metrics
-metrics:
-	docker-compose exec php vendor/bin/phpmetrics --report-html=api/tests/metrics api/app
 
 
 #-----------------------------------------------------------
@@ -183,23 +166,10 @@ outdated: yarn-update composer-outdated
 tinker:
 	docker-compose exec php php artisan tinker
 
-
-#-----------------------------------------------------------
-# Installation
-#-----------------------------------------------------------
-
-# Copy the Laravel API environment file
-env-api:
-	cp .env.api api/.env
-
-# Copy the NuxtJS environment file
-env-client:
-	cp .env.client client/.env
-
 # Add permissions for Laravel cache and storage folders
 permissions:
-	sudo chmod -R 777 api/bootstrap/cache
-	sudo chmod -R 777 api/storage
+	sudo chmod -R 777 src/api/bootstrap/cache
+	sudo chmod -R 777 src/api/storage
 
 # Permissions alias
 perm: permissions
@@ -215,56 +185,6 @@ storage:
 # PHP composer autoload command
 autoload:
 	docker-compose exec php composer dump-autoload
-
-# Install the environment
-install: build install-laravel env-api migrate install-nuxt env-client restart
-
-
-#-----------------------------------------------------------
-# Git commands
-#-----------------------------------------------------------
-
-# Undo the last commit
-git-undo:
-	git reset --soft HEAD~1
-
-# Make a Work In Progress commit
-git-wip:
-	git add .
-	git commit -m "WIP"
-
-# Export the codebase as app.zip archive
-git-export:
-	git archive --format zip --output app.zip master
-
-
-#-----------------------------------------------------------
-# Frameworks installation
-#-----------------------------------------------------------
-
-# Laravel
-install-laravel:
-	docker-compose down
-	sudo rm -rf api
-	mkdir api
-	docker-compose up -d
-	docker-compose exec php composer create-project --prefer-dist laravel/laravel .
-	sudo chmod -R 777 api/bootstrap/cache
-	sudo chmod -R 777 api/storage
-	sudo rm api/.env
-	cp .env.api api/.env
-	docker-compose exec php php artisan key:generate --ansi
-	docker-compose exec php composer require predis/predis
-	docker-compose exec php php artisan --version
-
-# Nuxt
-install-nuxt:
-	docker-compose down
-	sudo rm -rf client
-	docker-compose run client yarn create nuxt-app ../client
-	cp .env.client client/.env
-	docker-compose up -d
-	docker-compose exec client yarn info nuxt version
 
 
 #-----------------------------------------------------------

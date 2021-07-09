@@ -12,7 +12,7 @@ services:
       - ./:/var/www
       - ./docker/dev/nginx/logs:/var/log/nginx
     ports:
-      # Nuxt port
+      # Vue port
       - 8080:80
       # Laravel port
       - 8081:81
