@@ -27,10 +27,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./src/api:/var/www/src/api
-    environment:
-      # If you down want to use xDebug, set remote_enable=0
-      XDEBUG_CONFIG: "remote_enable=1"
-      PHP_IDE_CONFIG: "serverName=Docker"
     depends_on:
       - mysql
       - mailhog

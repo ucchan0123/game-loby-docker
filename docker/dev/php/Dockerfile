@@ -23,6 +23,10 @@ RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install gd
 
+# OPcache
+RUN docker-php-ext-configure opcache --enable-opcache
+RUN docker-php-ext-install opcache
+
 # MySQL
 RUN docker-php-ext-install pdo_mysql
 
@@ -36,10 +40,6 @@ RUN apt-get install -y zlib1g-dev libicu-dev g++ \
 
 # Custom php.ini config
 COPY php.ini /usr/local/etc/php/php.ini
-
-# Install Xdebug
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
 
 # Composer installation
 COPY --from=composer:2.1 /usr/bin/composer /usr/local/bin/composer
