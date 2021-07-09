@@ -2,20 +2,33 @@
 
 ## 使い方
 
+Vue CLIプロジェクトの設定
 ```
 # Vue CLIプロジェクトのクローン
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
 
+# ホスト側で「yarn install」の実行
+  →yarn installをdockerコンテナ内で実行するととても遅いため、ホスト側で実行します。
+
+# hostとportの設定
+「vue.config.js」にてhostを「'0.0.0.0'」 、portを「3000」に設定してください。
+```
+
+Laravelプロジェクトの設定
+```
 # Laravelプロジェクトのクローン
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 
 # envのコピー（適宜設定変更）
 $ cp .env.api ./src/api/.env
+```
 
+dockerの起動
+```
 # 初回クローン時
 $ make init
 
-# docker実行
+# docker起動
 $ make up
 
 # docker停止
@@ -23,13 +36,13 @@ $ make down
 ```
 
 ## Vue CLIの開発について
-このdocker環境はフロントの開発ビルドを監視しない設計になっています。 
+このdocker環境はdockerコンテナ内で開発ビルド（`yarn serve`）を実行します。 
 
-理由はdocker環境内でのVueのビルドがとても遅いためです。 
+ソースコードを保存するたびに自動でブラウザに反映されますが、dockerコンテナ内でのビルドが遅いため、反映までに少し時間がかかります。 
 
-Vueの開発ビルド( `npm run serve` )はホスト側で実行し、都合のいいタイミングで本番ビルドを( `npm run build` )を実行しましょう。 
+フロントのURLはこちら [http://localhost:8080](http://localhost:8080) 
 
-本番ビルドを( `npm run build` )実行後、画面を更新（ [http://localhost:8080](http://localhost:8080) ）すれば変更内容が反映されます。
+バックエンドAPIのURLはこちら [http://localhost:8080/api](http://localhost:8080/api) または  [http://localhost:8081](http://localhost:8081)
 
 ## Overview
 Look at one of the following topics to learn more about the project
