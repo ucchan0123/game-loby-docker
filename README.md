@@ -70,9 +70,12 @@ $ make down
 ```
 ## Basic usage
 
-Vue CLIの開発ビルドは `docker-compose up` を実行すると自動的に実行します。 
+### Vue CLIの開発について
+`docker-compose up` を実行するとコンテナ内で自動的に `yarn serve` を実行します。 
 
 ソースコードを保存するたびに自動でブラウザに反映されますが、dockerコンテナ内でのビルドが遅いため、反映までに少し時間がかかります。 
+
+### URL
 
 フロントのURLはこちら [http://localhost:8080](http://localhost:8080) 
 
