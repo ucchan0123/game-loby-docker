@@ -70,7 +70,7 @@ $ make down
 ```
 ## Basic usage
 
-Vue CLIの開発ビルドは `docker-compose up` を実行すると自動的実行します。 
+Vue CLIの開発ビルドは `docker-compose up` を実行すると自動的に実行します。 
 
 ソースコードを保存するたびに自動でブラウザに反映されますが、dockerコンテナ内でのビルドが遅いため、反映までに少し時間がかかります。 
 
@@ -92,7 +92,8 @@ PASSWORD: app
 ```
 
 ## Mailhog
-送信されたメールがどのように見えるかを確認したい場合は、 [http://localhost:8026](http://localhost:8026) にアクセスしてください。
+送信されたメールがどのように見えるかを確認したい場合は、 [http://localhost:8026](http://localhost:8026) にアクセスしてください。 
+
 これは、SMTPテスト用のテストメールキャッチャーツールです。送信されたメールはすべてここに保存されます。
 
 ## Logs
