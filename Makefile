@@ -2,7 +2,7 @@
 # Docker
 #-----------------------------------------------------------
 
-init: build composer-install permissions key migrate
+init: build composer-install permissions env-api key migrate
 
 # Wake up docker containers
 up:
@@ -165,6 +165,14 @@ outdated: yarn-update composer-outdated
 # Run tinker
 tinker:
 	docker-compose exec php php artisan tinker
+
+#-----------------------------------------------------------
+# Installation
+#-----------------------------------------------------------
+
+# Copy the Laravel API environment file
+env-api:
+	cp .env.api ./src/api/.env
 
 # Add permissions for Laravel cache and storage folders
 permissions:
