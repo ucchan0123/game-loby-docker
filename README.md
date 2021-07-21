@@ -86,7 +86,18 @@ Laravel Admin URL： [http://localhost:8082](http://localhost:8082)
 
 ## Database
 
-ホストからDBへ接続したい場合は、以下のパラーメーターを使用します。
+ホストからDBへ接続したい場合は、以下のパラーメーターを使用します。 
+
+Laravel APIプロジェクト
+```
+HOST: localhost
+PORT: 3307
+DB: api_mysql
+USER: app
+PASSWORD: app
+```
+
+Laravel Adminプロジェクト
 ```
 HOST: localhost
 PORT: 3307
