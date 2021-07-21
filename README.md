@@ -38,7 +38,6 @@ Vue CLIプロジェクトの設定
 ```
 # Vue CLIプロジェクトのクローン
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
-  → clientディレクトリをVue CLIプロジェクトのルートディレクトリとします。
 
 # ホスト側で「yarn install」の実行
   → yarn installをdockerコンテナ内で実行するととても遅いため、ホスト側で実行します。
@@ -47,14 +46,16 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
 「vue.config.js」にてhostを「'0.0.0.0'」 、portを「3000」に設定してください。
 ```
 
-Laravelプロジェクトの設定
+Laravel APIプロジェクトの設定
 ```
-# Laravelプロジェクトのクローン
+# Laravel APIプロジェクトのクローン
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
-  → apiディレクトリをLaravelプロジェクトのルートディレクトリとします。
+```
 
-# envのコピー（適宜設定変更）
-$ cp .env.api ./src/api/.env
+Laravel Adminプロジェクトの設定
+```
+# Laravel Adminプロジェクトのクローン
+$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/admin
 ```
 
 dockerの起動
@@ -77,19 +78,19 @@ $ make down
 
 ### URL
 
-フロントのURLはこちら [http://localhost:8080](http://localhost:8080) 
+Vue CLI URL： [http://localhost:8080](http://localhost:8080) 
 
-バックエンドAPIのURLはこちら [http://localhost:8080/api](http://localhost:8080/api) 
+Laravel API URL： [http://localhost:8080/api](http://localhost:8080/api) 
 
-バックエンドの画面が見たくなったらこちら [http://localhost:8081](http://localhost:8081) 
+Laravel Admin URL： [http://localhost:8082](http://localhost:8082) 
 
 ## Database
 
 ホストからDBへ接続したい場合は、以下のパラーメーターを使用します。
 ```
 HOST: localhost
-PORT: 13306
-DB: app
+PORT: 3307
+DB: api_mysql
 USER: app
 PASSWORD: app
 ```

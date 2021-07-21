@@ -52,6 +52,3 @@ RUN composer config -g process-timeout 3600 && \
 RUN apt-get clean
 RUN apt-get -y autoremove
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Set up default directory
-WORKDIR /var/www/src/api

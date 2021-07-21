@@ -2,7 +2,7 @@
 # Docker
 #-----------------------------------------------------------
 
-init: build composer-install permissions env-api key migrate
+init: build api-composer-install api-permissions api-env api-key api-migrate admin-composer-install admin-permissions admin-env admin-key admin-migrate
 
 # Wake up docker containers
 up:
@@ -52,8 +52,12 @@ build-no-cache:
 rebuild: down build
 
 # Run terminal of the php container
-php:
-	docker-compose exec php bash
+api-php:
+	docker-compose exec api-php bash
+
+# Run terminal of the php container
+admin-php:
+	docker-compose exec admin-php bash
 
 # Run terminal of the client container
 client:
@@ -68,131 +72,54 @@ client:
 logs-clear:
 	sudo rm docker/dev/nginx/logs/*.log
 	sudo rm src/api/storage/logs/*.log
+	sudo rm src/admin/storage/logs/*.log
 
-
-#-----------------------------------------------------------
-# Database
-#-----------------------------------------------------------
-
-# Run database migrations
-db-migrate:
-	docker-compose exec php php artisan migrate
-
-# Migrate alias
-migrate: db-migrate
-
-# Run migrations rollback
-db-rollback:
-	docker-compose exec php php artisan migrate:rollback
-
-# Rollback alias
-rollback: db-rollback
-
-# Run seeders
-db-seed:
-	docker-compose exec php php artisan db:seed
-
-# Fresh all migrations
-db-fresh:
-	docker-compose exec php php artisan migrate:fresh
-
-
-#-----------------------------------------------------------
-# Queue
-#-----------------------------------------------------------
-
-# Restart queue process
-queue-restart:
-	docker-compose exec php php artisan queue:restart
-
-
-#-----------------------------------------------------------
-# Testing
-#-----------------------------------------------------------
-
-# Run phpunit tests
-test:
-	docker-compose exec php vendor/bin/phpunit --order-by=defects --stop-on-defect
-
-# Run all tests ignoring failures.
-test-all:
-	docker-compose exec php vendor/bin/phpunit --order-by=defects
-
-# Run phpunit tests with coverage
-coverage:
-	docker-compose exec php vendor/bin/phpunit --coverage-html tests/report
-
-# Run phpunit tests
-dusk:
-	docker-compose exec php php artisan dusk
-
-
-#-----------------------------------------------------------
-# Dependencies
-#-----------------------------------------------------------
-
-# Install composer dependencies
-composer-install:
-	docker-compose exec php composer install
-
-# Update composer dependencies
-composer-update:
-	docker-compose exec php composer update
-
-# Update yarn dependencies
-yarn-update:
-	docker-compose exec client yarn update
-
-# Update all dependencies
-dependencies-update: composer-update yarn-update
-
-# Show composer outdated dependencies
-composer-outdated:
-	docker-compose exec yarn outdated
-
-# Show yarn outdated dependencies
-yarn-outdated:
-	docker-compose exec yarn outdated
-
-# Show all outdated dependencies
-outdated: yarn-update composer-outdated
-
-
-#-----------------------------------------------------------
-# Tinker
-#-----------------------------------------------------------
-
-# Run tinker
-tinker:
-	docker-compose exec php php artisan tinker
 
 #-----------------------------------------------------------
 # Installation
 #-----------------------------------------------------------
 
-# Copy the Laravel API environment file
-env-api:
+# Install composer dependencies
+api-composer-install:
+	docker-compose exec api-php composer install
+
+# Run database migrations
+api-migrate:
+	docker-compose exec api-php php artisan migrate
+
+# Copy the Laravel api environment file
+api-env:
 	cp .env.api ./src/api/.env
 
 # Add permissions for Laravel cache and storage folders
-permissions:
+api-permissions:
 	sudo chmod -R 777 src/api/bootstrap/cache
 	sudo chmod -R 777 src/api/storage
 
-# Permissions alias
-perm: permissions
+# Generate a Laravel app key
+api-key:
+	docker-compose exec api-php php artisan key:generate
+
+# Install composer dependencies
+admin-composer-install:
+	docker-compose exec admin-php composer install
+
+# Run database migrations
+admin-migrate:
+	docker-compose exec admin-php php artisan migrate
+
+# Copy the Laravel admin environment file
+admin-env:
+	cp .env.admin ./src/admin/.env
+
+# Add permissions for Laravel cache and storage folders
+admin-permissions:
+	sudo chmod -R 777 src/admin/bootstrap/cache
+	sudo chmod -R 777 src/admin/storage
 
 # Generate a Laravel app key
-key:
-	docker-compose exec php php artisan key:generate --ansi
-
-# Generate a Laravel storage symlink
-storage:
-	docker-compose exec php php artisan storage:link
-
-# PHP composer autoload command
-autoload:
-	docker-compose exec php composer dump-autoload
+admin-key:
+	docker-compose exec admin-php php artisan key:generate
 
 
 #-----------------------------------------------------------
