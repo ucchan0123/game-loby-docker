@@ -66,7 +66,7 @@ services:
   # api-mysql database container
   api-mysql:
     build:
-      context: docker/dev/mysql/mysql80
+      context: docker/dev/mysql
       dockerfile: Dockerfile
     volumes:
       - api-mysql-volume:/var/lib/mysql
@@ -82,7 +82,7 @@ services:
   # admin-mysql database container
   admin-mysql:
     build:
-      context: docker/dev/mysql/mysql80
+      context: docker/dev/mysql
       dockerfile: Dockerfile
     volumes:
       - admin-mysql-volume:/var/lib/mysql
@@ -98,7 +98,7 @@ services:
   # webpay-mysql database container
   webpay-mysql:
     build:
-      context: docker/dev/mysql/mysql57
+      context: docker/dev/mysql
       dockerfile: Dockerfile
     volumes:
       - webpay-mysql-volume:/var/lib/mysql
