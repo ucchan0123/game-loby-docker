@@ -2,7 +2,7 @@
 # Docker
 #-----------------------------------------------------------
 
-init: build api-composer-install api-permissions api-env api-key api-migrate admin-composer-install admin-permissions admin-env admin-key admin-migrate
+init: build api-composer-install api-env api-key api-migrate admin-composer-install admin-env admin-key admin-migrate webpay-composer-install webpay-env webpay-key webpay-migrate
 
 # Wake up docker containers
 up:
@@ -59,6 +59,10 @@ api-php:
 admin-php:
 	docker-compose exec admin-php bash
 
+# Run terminal of the php container
+webpay-php:
+	docker-compose exec webpay-php bash
+
 # Run terminal of the client container
 client:
 	docker-compose exec client /bin/sh
@@ -112,14 +116,25 @@ admin-migrate:
 admin-env:
 	cp .env.admin ./src/admin/.env
 
-# Add permissions for Laravel cache and storage folders
-admin-permissions:
-	sudo chmod -R 777 src/admin/bootstrap/cache
-	sudo chmod -R 777 src/admin/storage
-
 # Generate a Laravel app key
 admin-key:
 	docker-compose exec admin-php php artisan key:generate
+
+# Install composer dependencies
+webpay-composer-install:
+	docker-compose exec webpay-php composer install
+
+# Run database migrations
+webpay-migrate:
+	docker-compose exec webpay-php php artisan migrate
+
+# Copy the Laravel webpay environment file
+webpay-env:
+	cp .env.webpay ./src/webpay/.env
+
+# Generate a Laravel app key
+webpay-key:
+	docker-compose exec webpay-php php artisan key:generate
 
 
 #-----------------------------------------------------------
