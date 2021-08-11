@@ -10,7 +10,6 @@
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
 * [Database](#database)
-* [Mailhog](#mailhog)
 * [Logs](#logs)
 * [Running commands](#running-commands-from-containers)
 
@@ -19,7 +18,6 @@
 * Vue CLI
 * MySQL
 * Nginx
-* Mailhog (SMTP testing)
 
 ## Prerequisites
 - Docker-compose
@@ -105,11 +103,6 @@ DB: api_mysql
 USER: app
 PASSWORD: app
 ```
-
-## Mailhog
-送信されたメールがどのように見えるかを確認したい場合は、 [http://localhost:8026](http://localhost:8026) にアクセスしてください。 
-
-これは、SMTPテスト用のテストメールキャッチャーツールです。送信されたメールはすべてここに保存されます。
 
 ## Logs
 すべての **nginx** ログは `docker/dev/nginx/logs` ディレクトリにあります。
