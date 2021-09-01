@@ -4,6 +4,8 @@
 
 init: build api-composer-install api-env api-key api-migrate admin-composer-install admin-env admin-key admin-migrate webpay-composer-install webpay-env webpay-key webpay-migrate
 
+re-init: build api-composer-install api-key api-migrate admin-composer-install admin-key admin-migrate webpay-composer-install webpay-key webpay-migrate
+
 # Wake up docker containers
 up:
 	docker-compose up -d
