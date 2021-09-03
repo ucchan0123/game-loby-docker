@@ -5,7 +5,6 @@
 このプロジェクトについての詳細は、以下のトピックのいずれかをご覧ください。
 
 * [Stack](#stack-includes)
-* [Prerequisites](#prerequisites)
 * [Structure](#about-the-structure)
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
@@ -19,10 +18,6 @@
 * MySQL
 * Nginx
 
-## Prerequisites
-- Docker-compose
-- Make tool
-
 ## About the structure
 Laravel API と Vue CLI はバックエンドとフロントエンドで完全に別れています。 
 
@@ -32,31 +27,31 @@ Laravel API と Vue CLI はバックエンドとフロントエンドで完全�
 
 ## Installation
 
-Vue CLIプロジェクトの設定
-```
-# Vue CLIプロジェクトのクローン
-$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
+### Vue CLIプロジェクトの設定
 
-# ホスト側で「yarn install」の実行
+● Vue CLIプロジェクトのクローン  
+`$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client`
+
+● **[重要]** ホスト側で「yarn install」の実行  
   → yarn installをdockerコンテナ内で実行するととても遅いため、ホスト側で実行します。
 
-# hostとportの設定
+● hostとportの設定  
 「vue.config.js」にてhostを「'0.0.0.0'」 、portを「3000」に設定してください。
-```
 
-Laravel APIプロジェクトの設定
+
+### Laravel APIプロジェクトの設定
 ```
 # Laravel APIプロジェクトのクローン
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 ```
 
-Laravel Adminプロジェクトの設定
+### Laravel Adminプロジェクトの設定
 ```
 # Laravel Adminプロジェクトのクローン
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/admin
 ```
 
-dockerの起動
+### dockerの起動
 ```
 # 初回クローン時
 $ make init
@@ -98,8 +93,8 @@ PASSWORD: app
 Laravel Adminプロジェクト
 ```
 HOST: localhost
-PORT: 3307
-DB: api_mysql
+PORT: 3308
+DB: admin_mysql
 USER: app
 PASSWORD: app
 ```
