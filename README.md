@@ -51,6 +51,15 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/admin
 ```
 
+### `/etc/hosts` の設定
+
+```
+127.0.0.1       membars.wancommu.local
+127.0.0.1       api.membars.wancommu.local
+127.0.0.1       admin.wancommu.local
+127.0.0.1       webpay.local
+```
+
 ### dockerの起動
 ```
 # 初回クローン時
@@ -68,14 +77,6 @@ $ make down
 `docker-compose up` を実行するとコンテナ内で自動的に `yarn serve` を実行します。 
 
 ソースコードを保存するたびに自動でブラウザに反映されますが、dockerコンテナ内でのビルドが遅いため、反映までに少し時間がかかります。 
-
-### URL
-
-Vue CLI URL： [http://localhost:8080](http://localhost:8080) 
-
-Laravel API URL： [http://localhost:8080/api](http://localhost:8080/api) 
-
-Laravel Admin URL： [http://localhost:8082](http://localhost:8082) 
 
 ## Database
 

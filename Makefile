@@ -2,7 +2,7 @@
 # Docker
 #-----------------------------------------------------------
 
-init: build api-composer-install api-env api-key api-migrate admin-composer-install admin-env admin-key admin-migrate webpay-composer-install webpay-env webpay-key webpay-migrate client-env
+init: build api-env api-composer-install api-key api-migrate admin-env admin-composer-install admin-key admin-migrate webpay-env webpay-composer-install webpay-key webpay-migrate client-env
 
 re-init: build api-composer-install api-key api-migrate admin-composer-install admin-key admin-migrate webpay-composer-install webpay-key webpay-migrate
 
@@ -86,7 +86,7 @@ logs-clear:
 #-----------------------------------------------------------
 
 client-env:
-	cp .env.client ./src/client/.env
+	cp .env.client ./src/client/.env.local
 
 # Install composer dependencies
 api-composer-install:

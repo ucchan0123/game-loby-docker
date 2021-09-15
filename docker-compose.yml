@@ -12,14 +12,7 @@ services:
       - ./:/var/www
       - ./docker/dev/nginx/logs:/var/log/nginx
     ports:
-      # client port
-      - 8080:80
-      # api port
-      - 8081:81
-      # admin port
-      - 8082:82
-      # webpay port
-      - 8083:83
+      - 80:80
     depends_on:
       - client
       - api-php
