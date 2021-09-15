@@ -28,16 +28,16 @@ Laravel API と Vue CLI はバックエンドとフロントエンドで完全�
 ## Installation
 
 ### Vue CLIプロジェクトの設定
-
+```
 ● Vue CLIプロジェクトのクローン  
-`$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client`
+$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
 
-● **[重要]** ホスト側で「yarn install」の実行  
+● [重要] ホスト側で「yarn install」の実行  
   → yarn installをdockerコンテナ内で実行するととても遅いため、ホスト側で実行します。
 
 ● hostとportの設定  
 「vue.config.js」にてhostを「'0.0.0.0'」 、portを「3000」に設定してください。
-
+```
 
 ### Laravel APIプロジェクトの設定
 ```
@@ -119,9 +119,9 @@ docker-compose logs <container>
 ## Running commands from containers
 コンテナのcliの中からコマンドを実行することができます。コンテナの中に入るには、以下のコマンドを実行します。
 ```
-# PHP
-docker-compose exec php bash
+# api
+docker-compose exec api-php bash
 
-# NODE
+# client
 docker-compose exec client /bin/sh
 ```
