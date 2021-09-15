@@ -54,10 +54,14 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/admin
 ### `/etc/hosts` の設定
 
 ```
-127.0.0.1       membars.wancommu.local
-127.0.0.1       api.membars.wancommu.local
-127.0.0.1       admin.wancommu.local
-127.0.0.1       webpay.local
+127.0.0.1 members.wancommu.local
+::1       members.wancommu.local
+127.0.0.1 api.members.wancommu.local
+::1       api.members.wancommu.local
+127.0.0.1 admin.wancommu.local
+::1       admin.wancommu.local
+127.0.0.1 webpay.local
+::1       webpay.local
 ```
 
 ### dockerの起動
