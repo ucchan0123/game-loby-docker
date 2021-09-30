@@ -5,4 +5,4 @@ FROM node:14.17-alpine
 WORKDIR /var/www/src/client
 
 # Init command
-CMD ["sh", "-c", "yarn serve"]
+CMD ["sh", "-c", "yarn install && yarn serve"]

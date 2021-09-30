@@ -108,10 +108,12 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./src/client:/var/www/src/client
+      - node_modules-volume:/var/www/src/client/node_modules
 
 ######### Volumes ###################################
 
 volumes:
+  node_modules-volume:
   api-mysql-volume:
   admin-mysql-volume:
   webpay-mysql-volume:
