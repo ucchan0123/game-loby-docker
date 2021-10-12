@@ -9,7 +9,6 @@
 * [Installation](#installation)
 * [Basic usage](#basic-usage)
 * [Database](#database)
-* [Logs](#logs)
 * [Running commands](#running-commands-from-containers)
 
 ## Stack includes
@@ -22,8 +21,6 @@
 Laravel API と Vue CLI はバックエンドとフロントエンドで完全に別れています。 
 
 認証機能は「Laravel Sanctum」のクッキーベースのセッション認証を採用しています。 
-
-その認証には、SPAとAPIが同じトップレベルドメインを共有している必要があったため、dockerを使って開発環境を作りました。 
 
 ## Installation
 
@@ -42,23 +39,13 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 ```
 
-### Laravel Adminプロジェクトの設定
-```
-# Laravel Adminプロジェクトのクローン
-$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/admin
-```
-
 ### `/etc/hosts` の設定
 
 ```
-127.0.0.1 members.wancommu.local
-::1       members.wancommu.local
-127.0.0.1 api.members.wancommu.local
-::1       api.members.wancommu.local
-127.0.0.1 admin.wancommu.local
-::1       admin.wancommu.local
-127.0.0.1 webpay.local
-::1       webpay.local
+127.0.0.1 n-guild.local
+::1       n-guild.local
+127.0.0.1 api.n-guild.local
+::1       api.n-guild.local
 ```
 
 ### dockerの起動
@@ -90,27 +77,6 @@ PORT: 3307
 DB: api_mysql
 USER: app
 PASSWORD: app
-```
-
-Laravel Adminプロジェクト
-```
-HOST: localhost
-PORT: 3308
-DB: admin_mysql
-USER: app
-PASSWORD: app
-```
-
-## Logs
-すべての **nginx** ログは `docker/dev/nginx/logs` ディレクトリにあります。
-
-dockerコンテナのログを見るには、以下のコマンドを使用します。
-```
-# すべてのコンテナ
-docker-compose logs
-
-# コンテナごと
-docker-compose logs <container>
 ```
 
 ## Running commands from containers
