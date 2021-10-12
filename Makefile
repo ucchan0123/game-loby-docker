@@ -2,7 +2,7 @@
 # Docker
 #-----------------------------------------------------------
 
-init: build api-composer-install api-key api-migrate
+init: build api-env api-composer-install api-key api-migrate
 
 up:
 	docker-compose up -d
@@ -45,6 +45,9 @@ api-permissions:
 
 api-key:
 	docker-compose exec api-php php artisan key:generate
+
+api-env:
+	cp ./src/api/.env.example ./src/api/.env
 
 #-----------------------------------------------------------
 # Clearing
