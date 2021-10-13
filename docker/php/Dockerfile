@@ -34,9 +34,13 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install bcmath
 
 # Human Language and Character Encoding Support
-RUN apt-get install -y zlib1g-dev libicu-dev g++ \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install intl
+RUN apt-get install -y zlib1g-dev libicu-dev g++ && \
+    docker-php-ext-configure intl && \
+    docker-php-ext-install intl
+
+# PHP Redis extension
+RUN git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis && \
+    docker-php-ext-install redis
 
 # Custom php.ini config
 COPY php.ini /usr/local/etc/php/php.ini

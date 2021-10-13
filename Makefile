@@ -49,6 +49,18 @@ api-key:
 api-env:
 	cp ./src/api/.env.example ./src/api/.env
 
+
+#-----------------------------------------------------------
+# Redis
+#-----------------------------------------------------------
+
+api-redis:
+	docker-compose exec api-redis redis-cli
+
+api-redis-flush:
+	docker-compose exec api-redis redis-cli FLUSHALL
+
+
 #-----------------------------------------------------------
 # Clearing
 #-----------------------------------------------------------

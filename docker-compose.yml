@@ -42,6 +42,16 @@ services:
       - MYSQL_PASSWORD=app
       - MYSQL_ROOT_PASSWORD=app
 
+  api-redis:
+    build:
+      context: docker/redis
+      dockerfile: Dockerfile
+    volumes:
+      - api-redis-volume:/data
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+
   client:
     build:
       context: docker/client
@@ -55,3 +65,4 @@ services:
 volumes:
   node_modules-volume:
   api-mysql-volume:
+  api-redis-volume:
