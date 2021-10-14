@@ -2,7 +2,7 @@
 # Docker
 #-----------------------------------------------------------
 
-init: build api-env api-composer-install api-key api-migrate
+init: build api-env api-composer-install api-key api-migrate client-env
 
 up:
 	docker-compose up -d
@@ -48,6 +48,9 @@ api-key:
 
 api-env:
 	cp ./src/api/.env.example ./src/api/.env
+
+client-env:
+	cp ./src/client/.env.local.example ./src/client/.env.local
 
 
 #-----------------------------------------------------------
