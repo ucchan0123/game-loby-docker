@@ -1,8 +1,8 @@
 #-----------------------------------------------------------
-# Docker
+# Awesome commands :P
 #-----------------------------------------------------------
 
-init: build api-env api-composer-install api-key api-migrate client-env
+init: build client-env api-env api-composer-install api-key api-migrate
 
 up:
 	docker-compose up -d
@@ -19,9 +19,6 @@ logs:
 build:
 	docker-compose up -d --build
 
-build-no-cache:
-	docker-compose build --no-cache
-
 api-php:
 	docker-compose exec api-php bash
 
@@ -37,7 +34,7 @@ api-composer-install:
 	docker-compose exec api-php composer install
 
 api-migrate:
-	docker-compose exec api-php php artisan migrate
+	docker-compose exec api-php php artisan migrate --seed
 
 api-permissions:
 	sudo chmod -R 777 src/api/bootstrap/cache
@@ -71,8 +68,5 @@ api-redis-flush:
 remove-volumes:
 	docker-compose down --volumes
 
-prune-networks:
-	docker network prune
-
-prune-a:
-	docker system prune -a
+prune-all:
+	docker system prune --volumes
