@@ -58,6 +58,7 @@ services:
     volumes:
       - ./src/client:/var/www/src/client
       - node_modules-volume:/var/www/src/client/node_modules
+    working_dir: /var/www/src/client
 
 ######### Volumes ###################################
 
