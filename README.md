@@ -1,4 +1,4 @@
-## Dockerized starter template for Laravel + Vue CLI project.
+# Dockerized starter template for Laravel + Vue CLI project.
 
 ## 概要
 
