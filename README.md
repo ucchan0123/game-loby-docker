@@ -42,10 +42,10 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 ### `/etc/hosts` の設定
 
 ```
-127.0.0.1 n-guild.local
-::1       n-guild.local
-127.0.0.1 api.n-guild.local
-::1       api.n-guild.local
+127.0.0.1 n-guild.docker
+::1       n-guild.docker
+127.0.0.1 api.n-guild.docker
+::1       api.n-guild.docker
 ```
 
 ### dockerの起動
