@@ -29,6 +29,8 @@ Laravel API と Vue CLI はバックエンドとフロントエンドで完全�
 ● Vue CLIプロジェクトのクローン  
 $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
 
+● ホスト側でyarn installの実行
+
 ● hostとportの設定  
 「vue.config.js」にてhostを「'0.0.0.0'」 、portを「3000」に設定してください。
 ```
@@ -62,7 +64,7 @@ $ make down
 ## Basic usage
 
 ### Vue CLIの開発について
-`docker-compose up` を実行するとコンテナ内で自動的に `yarn install && yarn serve` を実行します。 
+`docker-compose up` を実行するとコンテナ内で自動的に `yarn serve` を実行します。 
 
 ソースコードを保存するたびに自動でブラウザに反映されますが、dockerコンテナ内でのビルドが遅いため、反映までに少し時間がかかります。 
 
@@ -73,7 +75,7 @@ $ make down
 Laravel APIプロジェクト
 ```
 HOST: localhost
-PORT: 3307
+PORT: 33060
 DB: api_mysql
 USER: app
 PASSWORD: app

@@ -34,7 +34,7 @@ services:
     volumes:
       - api-mysql-volume:/var/lib/mysql
     ports:
-      - 13306:3306
+      - 33060:3306
     environment:
       - MYSQL_DATABASE=api_mysql
       - MYSQL_USER=app
@@ -48,7 +48,7 @@ services:
     volumes:
       - api-redis-volume:/data
     ports:
-      - 16379:6379
+      - 63790:6379
     command: redis-server --appendonly yes
 
   client:
