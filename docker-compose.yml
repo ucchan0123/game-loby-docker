@@ -57,12 +57,10 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./src/client:/var/www/src/client
-      - node_modules-volume:/var/www/src/client/node_modules
     working_dir: /var/www/src/client
 
 ######### Volumes ###################################
 
 volumes:
-  node_modules-volume:
   api-mysql-volume:
   api-redis-volume:
