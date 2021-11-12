@@ -45,9 +45,7 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 
 ```
 127.0.0.1 n-guild.docker
-::1       n-guild.docker
 127.0.0.1 api.n-guild.docker
-::1       api.n-guild.docker
 ```
 
 ### dockerの起動
