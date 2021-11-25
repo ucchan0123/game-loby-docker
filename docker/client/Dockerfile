@@ -1,5 +1,5 @@
 # Image
-FROM node:16-alpine
+FROM nginx:stable-alpine
 
 # Init command
 CMD ["sh", "-c", "yarn serve"]
