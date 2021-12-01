@@ -10,12 +10,6 @@ up:
 down:
 	docker-compose down
 
-status:
-	docker-compose ps
-
-logs:
-	docker-compose logs
-
 build:
 	docker-compose up -d --build
 
@@ -59,14 +53,3 @@ api-redis:
 
 api-redis-flush:
 	docker-compose exec api-redis redis-cli FLUSHALL
-
-
-#-----------------------------------------------------------
-# Clearing
-#-----------------------------------------------------------
-
-remove-volumes:
-	docker-compose down --volumes
-
-prune-all:
-	docker system prune --volumes
