@@ -44,8 +44,8 @@ $ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
 ### `/etc/hosts` の設定
 
 ```
-127.0.0.1 n-guild.docker.com
-127.0.0.1 api.n-guild.docker.com
+127.0.0.1 n-guild.com
+127.0.0.1 api.n-guild.com
 ```
 
 ### dockerの起動
