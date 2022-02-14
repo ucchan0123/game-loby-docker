@@ -26,19 +26,18 @@ Laravel API と Vue CLI はバックエンドとフロントエンドで完全�
 
 ### Vue CLIプロジェクトの設定
 ```
-● Vue CLIプロジェクトのクローン  
-$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/client
+● Vue CLIプロジェクトのクローン
+※srcディレクトリ内に「client」というディレクトリ名に変更しクローンする
+$ git clone git@github.com:wizgeek-jp/wizplayee.io.git ./src/client
 
 ● ホスト側でyarn installの実行
-
-● hostとportの設定  
-「vue.config.js」にてhostを「'0.0.0.0'」 、portを「3000」に設定してください。
 ```
 
 ### Laravel APIプロジェクトの設定
 ```
 # Laravel APIプロジェクトのクローン
-$ git clone git@github.com:wizgeek-jp/XXXX.git ./src/api
+※srcディレクトリ内に「api」というディレクトリ名に変更しクローンする
+$ git clone git@github.com:wizgeek-jp/api.wizplayee.io.git ./src/api
 ```
 
 ### `/etc/hosts` の設定
