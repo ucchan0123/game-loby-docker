@@ -43,8 +43,8 @@ $ git clone git@github.com:wizgeek-jp/api.wizplayee.io.git ./src/api
 ### `/etc/hosts` の設定
 
 ```
-127.0.0.1 wizplayee.work
-127.0.0.1 api.wizplayee.work
+127.0.0.1 members.vue-laravel.work
+127.0.0.1 api.members.vue-laravel.work
 ```
 
 ### dockerの起動
